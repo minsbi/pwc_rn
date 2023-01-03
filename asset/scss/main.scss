@@ -1,0 +1,868 @@
+//메인컬러
+$mColor: #1b3472;
+//메인글자컬러
+$mLetter: #fff;
+//서브글자컬러
+$sLetter: #222;
+
+//flex
+@mixin flexWrap($justify: space-between, $gap:null, $align:null){
+    display: flex;
+    justify-content: $justify;
+    gap: $gap;
+    align-items: $align;
+}
+
+//마스크
+@mixin blmsk($blmsk:rgba(0, 0, 0, 0.5)) {
+    width: 100%;
+    height: 100%;
+    background-color: $blmsk;
+}
+
+// 0. skip메뉴
+#skip {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+     >a {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: -44px;
+        width: 100%;
+        color: #fff;
+        font-size: 20px;
+        line-height: 44px;
+        text-align: center;
+        background-color: #444;
+        transition-property: top;
+        transition: 0.5s;
+        &:focus {
+            top: 0;
+        }
+        &:active {
+            top: 0;
+        }
+     }
+}
+
+// 1. 헤더
+#pwc-hd {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: $mColor;
+    transition: height 300ms;
+    z-index: 999;
+    .hd-container {
+        .hd-wrapper {
+            @include flexWrap();
+            .hd-logo{
+                width: 48px;
+                height: 48px;
+                margin: 16px 56px 16px 60px;
+                background-image: url("../img/header/logo/pwc_logo_main.png");
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                >a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            nav{
+                .gnb-container {
+                    width: 100%;
+                    height: 100%;
+                    .gnb-wrapper {
+                        width: 100%;
+                        #gnb {
+                            @include flexWrap($justify:center);
+                            .gnb-depth1 {
+                                font-size: 2.4rem;
+                                >a {
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0 40px;
+                                    padding-top: 28px;
+                                    color: $mLetter;
+                                    &::after {
+                                        content: "";
+                                        display: block;
+                                        width: 0%;
+                                        height: 3px;
+                                        margin-top: 25px;
+                                        background-color: #fff;
+                                        transition: width 300ms;
+                                    }
+                                    &.active{
+                                        &::after {
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                                .gnb-submenu {
+                                    @include flexWrap($justify:center, $gap: 100px);
+                                    position: absolute;
+                                    left: 0;
+                                    top: 80px;
+                                    width: 100%;
+                                    height: 0px;
+                                    padding-bottom: 0px;
+                                    .gnb-depth2 {
+                                        font-size: 1.8rem;
+                                        font-weight: 100;
+                                        >a {
+                                            display: none;
+                                            line-height: 60px;
+                                            color: $mLetter;
+                                            &:hover {
+                                                border-bottom: 1px solid #fff;
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        height: 60px;
+                                        border-top: 1px solid rgba(255,255,255,0.2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .quick-menu {
+                @include flexWrap();
+                margin-right: 60px;
+                margin-top: 26px;
+                .sch-btn {      //나중에 꼭 상호작용 만들어 줄 것
+                    width: 28px;
+                    height: 28px;
+                    margin-right: 48px;
+                    background-image: url("../img/header/magnifying-glass-solid.svg");
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .ham {
+                    width: 28px;
+                    height: 28px; 
+                    background-image: url("../img/header/bars-solid.svg");
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .sitemap-wrapper {
+                    display: none;      //사이트맵 가리기용
+                    .modal {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100vh;
+                        background-color: rgba(0, 0, 0, 0.9);
+                    }
+                    .sitemap {
+                        @include flexWrap($gap:5vw);
+                        position: absolute;
+                        left: 50vw;
+                        top: 50vh;
+                        transform: translate(-50%, -50%);
+                        .stm-depth1 {
+                            width: 16vw;
+                            font-size: 30px;
+                            font-weight: 700;
+                            >a {
+                                color: $mLetter;
+                            }
+                            .stm-submenu {
+                                margin-top: 20px;
+                                padding-top: 20px;
+                                border-top: 3px solid $mColor;
+                                .stm-depth2 {
+                                    font-size: 20px;
+                                    font-weight: 100;
+                                    >a {
+                                        display: block;
+                                        padding: 20px 0;
+                                        color: $mLetter;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .close-btn {
+                        position: absolute;
+                        width: 28px;
+                        height: 28px;
+                        right: 0;
+                        top: 0;
+                        margin-right: 60px;
+                        margin-top: 26px;
+                        >a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        height: 140px;
+    }
+}
+// 모바일 헤더
+#pwc-m-hd {
+    display: none;
+}
+
+// 2. 메인
+#pwc-main {
+    width: 100%;
+    #main-banner {
+        width: 100%;
+        height: 900px;
+        .mb-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .mb-wrapper {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transition: 500ms;
+                @include flexWrap($justify:flex-start);
+                .mb01 {
+                    position: relative;
+                    width: calc(100% / 3);
+                    height: 100%;
+                    .imgbox {
+                        width: 100%;
+                        height: 100%;
+                        background-image: url("../img/main/page01/mb01_bg.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                        .blmsk {
+                            @include blmsk();
+                        }
+                    }
+                    .textbox {
+                        position: absolute;
+                        left: 15vw;
+                        top: 30%;
+                        h3 {
+                            padding-bottom: 20px;
+                            color: $mLetter;
+                            font-size: 40px;
+                            font-weight: 700;
+                            line-height: 1.4;
+                            letter-spacing: 0.5px;
+                        }
+                        p {
+                            color: $mLetter;
+                            font-size: 20px;
+                            font-weight: 100;
+                            line-height: 1.8;
+                        }
+                    }
+                }
+                .mb02 {
+                    position: relative;
+                    width: calc(100% / 3);
+                    height: 100%;
+                    .imgbox {
+                        width: 100%;
+                        height: 100%;
+                        background-image: url("../img/main/page01/mb02_bg.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                        .blmsk {
+                            @include blmsk();
+                        }
+                    }
+                    .textbox {
+                        position: absolute;
+                        left: 50vw;
+                        top: 35%;
+                        h3 {
+                            padding-bottom: 20px;
+                            color: $mLetter;
+                            font-size: 40px;
+                            font-weight: 700;
+                            line-height: 1.4;
+                            letter-spacing: 0.5px;
+                            word-break: keep-all;
+                        }
+                        p {
+                            color: $mLetter;
+                            font-size: 20px;
+                            font-weight: 100;
+                            line-height: 1.8;
+                        }
+                    }
+                }
+                .mb03 {
+                    position: relative;
+                    width: calc(100% / 3);
+                    height: 100%;
+                    .imgbox {
+                        width: 100%;
+                        height: 100%;
+                        background-image: url("../img/main/page01/mb03_bg.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                        .blmsk {
+                            @include blmsk();
+                        }
+                    }
+                    .textbox {
+                        position: absolute;
+                        left: 15vw;
+                        top: 30%;
+                        h3 {
+                            padding-bottom: 20px;
+                            color: $mLetter;
+                            font-size: 40px;
+                            font-weight: 700;
+                            line-height: 1.4;
+                            letter-spacing: 0.5px;
+                            word-break: keep-all;
+                        }
+                        p {
+                            color: $mLetter;
+                            font-size: 20px;
+                            font-weight: 100;
+                            line-height: 1.8;
+                        }
+                    }
+                }
+            }
+            .mb-controls-wrap {
+                .prev-btn {
+                    width: 40px;
+                    height: 40px;
+                    padding: 0 2vw;
+                    font-size: 0;
+                    background-image: url("../img/main/page01/slide_slim_btn.png");
+                    background-size: 20px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    border-radius: 50%;
+                    opacity: 0.2;
+                    &::after {
+                        display: none;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .next-btn {
+                    width: 40px;
+                    height: 40px;
+                    padding: 0 2vw;
+                    font-size: 0;
+                    background-image: url("../img/main/page01/slide_slim_btn.png");
+                    background-size: 20px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    border-radius: 50%;
+                    transform: rotate(180deg);
+                    opacity: 0.2;
+                    &::after {
+                        display: none;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+            .mb-pagination-wrap {
+                position: absolute;
+                width: 100%;
+                left: 0%;
+                bottom: 50px;
+                    .swiper-pagination-bullet {
+                        width: 20px;
+                        height: 20px;
+                        margin: 0 20px;
+                        background-color: white;
+                        border-radius: 50%;
+                        font-size: 0;
+                        opacity: 0.3;
+                        &.swiper-pagination-bullet-active {
+                            background-color: $mColor;
+                            opacity: 1;
+                        }
+                    }
+            }
+        }
+    }
+    #pwc-business {
+        position: relative;
+        width: 100%;
+        height: 1080px;
+        .busi-title-wrap {
+            width: 100%;
+            padding-top: 80px;
+            color: $sLetter;
+            text-align: center;
+            >h2 {
+                padding-bottom: 30px;
+                font-size: 40px;
+                font-weight: 700;
+            }
+            >p {
+                padding-bottom: 160px;
+                font-size: 20px;
+                font-weight: 400;
+                word-break: keep-all;
+            }
+        }
+        .busi-container {
+            .busi-wrapper {
+                @include flexWrap ($justify:center, $gap:8vw);
+                .busi-menu-wrap {
+                    width: 14vw;
+                    padding-top: 160px;
+                    .busi-menu {
+                        @include flexWrap($justify:center, $gap:3rem);
+                            flex-direction: column;
+                        li {
+                            padding-left: 0.6vw;
+                            a {
+                                position: relative;
+                                color: $sLetter;
+                                font-size: 20px;
+                                font-weight: 400;
+                                word-break: keep-all;
+                                transition: 300ms;
+                                &::before {
+                                    content:"";
+                                    position: absolute;
+                                    left: -20px;
+                                    top: 40%;
+                                    width: 6px;
+                                    height: 6px;
+                                    background-color: $sLetter;
+                                    border-radius: 50%;
+                                    transform: translateY(-50%);
+                                    transition: 300ms;
+                                }
+                                &.active {
+                                    font-weight: 700;
+                                    &::before {
+                                        content:"";
+                                        position: absolute;
+                                        left: -22px;
+                                        top: 42%;
+                                        width: 8px;
+                                        height: 8px;
+                                        background-color: $mColor;
+                                        border-radius: 50%;
+                                        transform: translateY(-50%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .busi-contents-wrap {
+                    @include flexWrap($gap: 90px);
+                    .busi-contents-left {
+                        padding-top: 160px;
+                        .busi-title {
+                            height: 0;
+                            opacity: 0;
+                            overflow: hidden;
+                            transition: opacity 800ms;
+                            transition-delay: 200ms;
+                            >h3 {
+                                margin-bottom: 20px;
+                                color: $sLetter;
+                                font-size: 40px;
+                                font-weight: 700;
+                            }
+                            >p {
+                                width: 450px;
+                                margin-bottom: 40px;
+                                color: $sLetter;
+                                font-size: 20px;
+                                font-weight: 400;
+                                line-height: 2em;
+                                word-break: keep-all;
+                            }
+                            >button {
+                                width: 150px;
+                                height: 50px;
+                                color: $mLetter;
+                                font-size: 18px;
+                                font-weight: 700;
+                                background-color: $mColor;
+                                border-radius: 10px;
+                                box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.5);
+                            }
+                            &.active {
+                                height: 100%;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                    .busi-contents-right {
+                        ul {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-template-rows: repeat(2, 1fr);
+                            column-gap: 10px;
+                            row-gap: 10px;
+                            height: 0;
+                            overflow: hidden;
+                            opacity: 0;
+                            transition: opacity 800ms;
+                            transition-delay: 400ms;
+                            >li {
+                                background-size: cover;
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                &.busi-contents-consulting01 {
+                                    background-image: url("../img/main/page02/consulting/consult_img01.jpg");
+                                }
+                                &.busi-contents-consulting02 {
+                                    background-image: url("../img/main/page02/consulting/consult_img02.jpg");
+                                }
+                                &.busi-contents-consulting03 {
+                                    background-image: url("../img/main/page02/consulting/consult_img03.jpg");
+                                }
+                                &.busi-contents-consulting04 {
+                                    background-image: url("../img/main/page02/consulting/consult_img04.jpg");
+                                }
+                                >a {
+                                    display: block;
+                                    width: 300px;
+                                    height: 300px;
+                                    dl {
+                                        position: relative;
+                                        height: 100%;
+                                        padding: 30px;
+                                        color: $mLetter;
+                                        background-color: rgba(0, 0, 0, 0.5);
+                                        dt {
+                                            position: absolute;
+                                            left: 50%;
+                                            top: 50%;
+                                            width: 200px;
+                                            font-size: 24px;
+                                            font-weight: 700;
+                                            text-align: center;
+                                            letter-spacing: 1px;
+                                            transform: translate(-50%, -50%);
+                                            transition: 300ms;
+                                            &.active {
+                                            top: 15%;
+                                            padding-bottom: 10px;
+                                            border-bottom: 1px solid #fff;  //액티브 상태일 때로
+                                            }
+                                        }
+                                        dd {
+                                            display: none;
+                                            margin-top: 50%;
+                                            margin-bottom: 20px;
+                                            line-height: 2.2rem;
+                                            font-size: 16px;
+                                            font-weight: 100;
+                                            transform: translateY(-50%);
+                                            word-break: keep-all;
+                                        }
+                                        &.active {
+                                            background-color: rgba(0, 0, 0, 0.85);
+                                        }
+                                    }
+                                }
+                            }
+                            &.active {
+                                height: 100%;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #pwc-protfolio {
+        position: relative;
+        width: 100%;
+        height: 1080px;
+        background-color: $mColor;
+        .pf-title-wrap {
+            position: absolute;
+            left: 10vw;
+            top: 10vh;
+            color: $mLetter;
+            h2 {
+                padding-bottom: 2vh;
+                font-size: 40px;
+                font-weight: 700;
+            }
+            p {
+                display: inline-block;
+                padding-top: 10px;
+                font-size: 20px;
+                font-weight: 100;
+                line-height: 4rem;
+                letter-spacing: 1px;
+                border-top: 1px solid $mLetter;
+            }
+        }
+        .pf-container {
+            .pf-wrapper {
+                position: absolute;
+                right:8vw;
+                top: 55%;
+                transform: translateY(-50%);
+                .pf-tab-inner {
+                    @include flexWrap($justify:center, $gap:20px);
+                    .pf-tab {
+                        position: relative;
+                        width: 200px;
+                        height: 400px;
+                        background-size: 600px 400px;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        &.pf-tab-consulting {
+                            background-image: url("../img/main/page03/pf_img01.png");
+                        }
+                        &.pf-tab-education {
+                            background-image: url("../img/main/page03/pf_img02.jpg");
+                        }
+                        &.pf-tab-facilitation {
+                            background-image: url("../img/main/page03/pf_img03.jpg");
+                        }
+                        &.pf-tab-town {
+                            background-image: url("../img/main/page03/pf_img04.jpg");
+                        }
+                        &.pf-tab-evc {
+                            background-image: url("../img/main/page03/pf_img05.jpg");
+                        }
+                        &:nth-child(2n) {
+                            margin-top: 50px;
+                        }
+                        >a {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            padding: 360px 0 20px 20px;
+                            color: $mLetter;
+                            font-size: 20px;
+                            font-weight: 100;
+                            line-height: 20px;
+                            background-color: rgba(0, 0, 0, 0.8);
+                            transition: 300ms;
+                            &.active {
+                                background-color: rgba(0, 0, 0, 0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #pwc-together {
+        width: 100%;
+        height: 500px;
+        background-image: url("../img/main/page04/pwc_toge_bg.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        .toge-container {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            .toge-wrapper {
+                h3 {
+                    padding-top: 110px;
+                    color: $mLetter;
+                    font-size: 40px;
+                    font-weight: 700;
+                    line-height:1.2;
+                    text-align: center;
+                    word-break: keep-all;
+                }
+                .m-toge-title {
+                    display: none;
+                }
+                .toge-inner {
+                    @include flexWrap($justify:space-evenly);
+                    margin-top: 80px;
+                    p {
+                        color: $mLetter;
+                        font-size: 20px;
+                        font-weight: 100;
+                        letter-spacing: 1px;
+                        span {
+                            font-size: 60px;
+                            font-weight: 700;
+                            line-height: 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #pwc-pm {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        .pm-container {
+            width: 100%;
+            height: 100%;
+            background-image: url("../img/main/page05/pwc_pm_bg.jpg");
+            background-size: cover;
+            background-position: center center;
+            .pm-wrapper {
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                .pm-inner {
+                    position: absolute;
+                    left: 320px;
+                    top: 160px;
+                    h3 {
+                        margin-bottom: 20px;
+                        color: $mLetter;
+                        font-size: 40px;
+                        font-weight: 700;
+                        line-height: 5rem;
+                    }
+                    .btn-more {
+                        width: 150px;
+                        height: 50px;
+                        background-color: #fff;
+                        border-radius: 10px;
+                        color: $mColor;
+                        font-size: 18px;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 3. 푸터
+#pwc-ft {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    padding-top: 50px;
+    background-color: $mColor;
+    .ft-stm-container {
+        padding-left: 10vw;
+        @include flexWrap($justify:left); 
+            flex-direction: column;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-stm-wrapper {
+            .ft-stm-inner {
+                @include flexWrap ($justify:left, $gap:2.2vw);
+                >li {
+                    >a {
+                        display: block;
+                        padding-bottom: 8px;
+                        color: $mLetter;
+                        font-size: 24px;
+                        font-weight: 700;
+                    }
+                    .ft-stm {
+                        >li {
+                            >a {
+                                color: $mLetter;
+                                font-size: 18px;
+                                font-weight: 100;
+                                line-height: 1.8;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ft-cts-container {
+        margin-left: 5vw;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-cts {
+            color: $mLetter;
+            font-size: 18px;
+            dt {
+                font-weight: 700;
+                padding-bottom: 10px;
+            }
+            dd {
+                font-weight: 100;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .ft-fu-container {
+        @include flexWrap($justify:left); 
+        flex-direction: column;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-fu-wrapper {
+            @include flexWrap($justify:left, $gap:20px);
+            a {
+                display: block;
+                width: 40px;
+                height: 40px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .ft-fu-blog {
+                width: 45px;
+                height: 40px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .ft-policy-container {
+        padding-left: 10vw;
+        color: $mLetter;
+        line-height: 2;
+        .pwc-policy {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .pwc-rights {
+            font-size: 16px;
+            font-weight: 100;
+        }
+    }
+}

@@ -1,0 +1,309 @@
+#skip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+#skip > a {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -44px;
+  width: 100%;
+  color: #fff;
+  font-size: 20px;
+  line-height: 44px;
+  text-align: center;
+  background-color: #444;
+  transition-property: top;
+  transition: 0.5s;
+}
+#skip > a:focus {
+  top: 0;
+}
+#skip > a:active {
+  top: 0;
+}
+
+#pwc-hd {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  background-color: #1b3472;
+  transition: height 300ms;
+  z-index: 999;
+}
+#pwc-hd .hd-container .hd-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+#pwc-hd .hd-container .hd-wrapper .hd-logo {
+  width: 48px;
+  height: 48px;
+  margin: 16px 56px 16px 60px;
+  background-image: url("../img/header/logo/pwc_logo_main.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#pwc-hd .hd-container .hd-wrapper .hd-logo > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container {
+  width: 100%;
+  height: 100%;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper {
+  width: 100%;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb {
+  display: flex;
+  justify-content: center;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 {
+  font-size: 2.4rem;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 > a {
+  display: block;
+  width: 100%;
+  padding: 0 40px;
+  padding-top: 28px;
+  color: #fff;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 > a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 3px;
+  margin-top: 25px;
+  background-color: #fff;
+  transition: width 300ms;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 > a.active::after {
+  width: 100%;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 .gnb-submenu {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  position: absolute;
+  left: 0;
+  top: 80px;
+  width: 100%;
+  height: 0px;
+  padding-bottom: 0px;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 .gnb-submenu .gnb-depth2 {
+  font-size: 1.8rem;
+  font-weight: 100;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 .gnb-submenu .gnb-depth2 > a {
+  display: none;
+  line-height: 60px;
+  color: #fff;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 .gnb-submenu .gnb-depth2 > a:hover {
+  border-bottom: 1px solid #fff;
+}
+#pwc-hd .hd-container .hd-wrapper nav .gnb-container .gnb-wrapper #gnb .gnb-depth1 .gnb-submenu.active {
+  height: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 60px;
+  margin-top: 26px;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sch-btn {
+  width: 28px;
+  height: 28px;
+  margin-right: 48px;
+  background-image: url("../img/header/magnifying-glass-solid.svg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .ham {
+  width: 28px;
+  height: 28px;
+  background-image: url("../img/header/bars-solid.svg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper {
+  display: none;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap {
+  display: flex;
+  justify-content: space-between;
+  gap: 5vw;
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap .stm-depth1 {
+  width: 16vw;
+  font-size: 30px;
+  font-weight: 700;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap .stm-depth1 > a {
+  color: #fff;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap .stm-depth1 .stm-submenu {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 3px solid #1b3472;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap .stm-depth1 .stm-submenu .stm-depth2 {
+  font-size: 20px;
+  font-weight: 100;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .sitemap .stm-depth1 .stm-submenu .stm-depth2 > a {
+  display: block;
+  padding: 20px 0;
+  color: #fff;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .close-btn {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  right: 0;
+  top: 0;
+  margin-right: 60px;
+  margin-top: 26px;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .close-btn > a {
+  width: 100%;
+}
+#pwc-hd .hd-container .hd-wrapper .quick-menu .sitemap-wrapper .close-btn > a img {
+  width: 100%;
+}
+#pwc-hd.active {
+  height: 140px;
+}
+
+#pwc-m-hd {
+  display: none;
+}
+
+#pwc-ft {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr;
+  grid-template-rows: 2.5fr 1fr;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  padding-top: 50px;
+  background-color: #1b3472;
+}
+#pwc-ft .ft-stm-container {
+  padding-left: 10vw;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+#pwc-ft .ft-stm-container > h2 {
+  padding-bottom: 24px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+#pwc-ft .ft-stm-container .ft-stm-wrapper .ft-stm-inner {
+  display: flex;
+  justify-content: left;
+  gap: 2.2vw;
+}
+#pwc-ft .ft-stm-container .ft-stm-wrapper .ft-stm-inner > li > a {
+  display: block;
+  padding-bottom: 8px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+#pwc-ft .ft-stm-container .ft-stm-wrapper .ft-stm-inner > li .ft-stm > li > a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 1.8;
+}
+#pwc-ft .ft-cts-container {
+  margin-left: 5vw;
+}
+#pwc-ft .ft-cts-container > h2 {
+  padding-bottom: 24px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+#pwc-ft .ft-cts-container .ft-cts {
+  color: #fff;
+  font-size: 18px;
+}
+#pwc-ft .ft-cts-container .ft-cts dt {
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+#pwc-ft .ft-cts-container .ft-cts dd {
+  font-weight: 100;
+  padding-bottom: 20px;
+}
+#pwc-ft .ft-fu-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+#pwc-ft .ft-fu-container > h2 {
+  padding-bottom: 24px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+#pwc-ft .ft-fu-container .ft-fu-wrapper {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+#pwc-ft .ft-fu-container .ft-fu-wrapper a {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+#pwc-ft .ft-fu-container .ft-fu-wrapper a img {
+  width: 100%;
+  height: 100%;
+}
+#pwc-ft .ft-fu-container .ft-fu-wrapper .ft-fu-blog {
+  width: 45px;
+  height: 40px;
+}
+#pwc-ft .ft-fu-container .ft-fu-wrapper .ft-fu-blog img {
+  width: 100%;
+  height: 100%;
+}
+#pwc-ft .ft-policy-container {
+  padding-left: 10vw;
+  color: #fff;
+  line-height: 2;
+}
+#pwc-ft .ft-policy-container .pwc-policy {
+  font-size: 18px;
+  font-weight: 700;
+}
+#pwc-ft .ft-policy-container .pwc-rights {
+  font-size: 16px;
+  font-weight: 100;
+}

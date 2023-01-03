@@ -1,0 +1,146 @@
+@charset 'UTF-8';
+
+/* 1. 에릭마이어 리셋 css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+    font-family: 'LINESeedKR', 'Roboto', 'Noto Sans KR', 'Rubik', 'Pretendard-Regular'; 
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 2. 추가 리셋 css */
+
+html {
+    font-size: 10px;  /* 1rem = 10px 고정용 */ 
+    width: 100%; /*가로 스크롤 바 방지용*/
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;  /*아이폰 미니 기준 가장 작은 화면 사이즈*/
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    font-family: 'LINESeedKR', 'Roboto', 'Noto Sans KR', 'Rubik', 'Pretendard-Regular'; 
+    text-decoration: none;
+}
+
+input, textarea, select, button {
+    font-size: 1em;
+    color: #222;
+    font-family: 'LINESeedKR', 'Roboto', 'Noto Sans KR', 'Rubik', 'Pretendard-Regular'; 
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+address, i {
+    font-style: normal;
+}
+
+.blind {
+    position: absolute;
+    top: -9999em; 
+    overflow: hidden;
+}
+
+img {
+    vertical-align: top;
+}
+
+.clearFix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 3. 공용 클래스 */
+
+/* 접근성 */
+#skip {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+#skip a {
+    position: absolute;
+    left: 0;
+    top: -44px;
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    line-height: 44px;
+    text-align: center;
+    transition-property: top;
+    transition-duration: 0.3s;
+}
+
+#skip a:focus, #skip a:active {
+    top: 0;
+}
+

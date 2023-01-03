@@ -1,0 +1,337 @@
+//메인컬러
+$mColor: #1b3472;
+//메인글자컬러
+$mLetter: #fff;
+//서브글자컬러
+$sLetter: #222;
+
+//flex
+@mixin flexWrap($justify: space-between, $gap:null, $align:null){
+    display: flex;
+    justify-content: $justify;
+    gap: $gap;
+    align-items: $align;
+}
+
+//마스크
+@mixin blmsk($blmsk:rgba(0, 0, 0, 0.5)) {
+    width: 100%;
+    height: 100%;
+    background-color: $blmsk;
+}
+
+// 0. skip메뉴
+#skip {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+     >a {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: -44px;
+        width: 100%;
+        color: #fff;
+        font-size: 20px;
+        line-height: 44px;
+        text-align: center;
+        background-color: #444;
+        transition-property: top;
+        transition: 0.5s;
+        &:focus {
+            top: 0;
+        }
+        &:active {
+            top: 0;
+        }
+     }
+}
+
+// 1. 헤더
+#pwc-hd {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: $mColor;
+    transition: height 300ms;
+    z-index: 999;
+    .hd-container {
+        .hd-wrapper {
+            @include flexWrap();
+            .hd-logo{
+                width: 48px;
+                height: 48px;
+                margin: 16px 56px 16px 60px;
+                background-image: url("/pwc_rn/img/header/logo/pwc_logo_main.png");
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                >a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            nav{
+                .gnb-container {
+                    width: 100%;
+                    height: 100%;
+                    .gnb-wrapper {
+                        width: 100%;
+                        #gnb {
+                            @include flexWrap($justify:center);
+                            .gnb-depth1 {
+                                font-size: 2.4rem;
+                                >a {
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0 40px;
+                                    padding-top: 28px;
+                                    color: $mLetter;
+                                    &::after {
+                                        content: "";
+                                        display: block;
+                                        width: 0%;
+                                        height: 3px;
+                                        margin-top: 25px;
+                                        background-color: #fff;
+                                        transition: width 300ms;
+                                    }
+                                    &.active{
+                                        &::after {
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                                .gnb-submenu {
+                                    @include flexWrap($justify:center, $gap: 100px);
+                                    position: absolute;
+                                    left: 0;
+                                    top: 80px;
+                                    width: 100%;
+                                    height: 0px;
+                                    padding-bottom: 0px;
+                                    .gnb-depth2 {
+                                        font-size: 1.8rem;
+                                        font-weight: 100;
+                                        >a {
+                                            display: none;
+                                            line-height: 60px;
+                                            color: $mLetter;
+                                            &:hover {
+                                                border-bottom: 1px solid #fff;
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        height: 60px;
+                                        border-top: 1px solid rgba(255,255,255,0.2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .quick-menu {
+                @include flexWrap();
+                margin-right: 60px;
+                margin-top: 26px;
+                .sch-btn {      //나중에 꼭 상호작용 만들어 줄 것
+                    width: 28px;
+                    height: 28px;
+                    margin-right: 48px;
+                    background-image: url("/pwc_rn/img/header/magnifying-glass-solid.svg");
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .ham {
+                    width: 28px;
+                    height: 28px; 
+                    background-image: url("/pwc_rn/img/header/bars-solid.svg");
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .sitemap-wrapper {
+                    display: none;      //사이트맵 가리기용
+                    .modal {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100vh;
+                        background-color: rgba(0, 0, 0, 0.9);
+                    }
+                    .sitemap {
+                        @include flexWrap($gap:5vw);
+                        position: absolute;
+                        left: 50vw;
+                        top: 50vh;
+                        transform: translate(-50%, -50%);
+                        .stm-depth1 {
+                            width: 16vw;
+                            font-size: 30px;
+                            font-weight: 700;
+                            >a {
+                                color: $mLetter;
+                            }
+                            .stm-submenu {
+                                margin-top: 20px;
+                                padding-top: 20px;
+                                border-top: 3px solid $mColor;
+                                .stm-depth2 {
+                                    font-size: 20px;
+                                    font-weight: 100;
+                                    >a {
+                                        display: block;
+                                        padding: 20px 0;
+                                        color: $mLetter;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .close-btn {
+                        position: absolute;
+                        width: 28px;
+                        height: 28px;
+                        right: 0;
+                        top: 0;
+                        margin-right: 60px;
+                        margin-top: 26px;
+                        >a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        height: 140px;
+    }
+}
+// 모바일 헤더
+#pwc-m-hd {
+    display: none;
+}
+
+// 2. 메인
+
+// 3. 푸터
+#pwc-ft {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    padding-top: 50px;
+    background-color: $mColor;
+    .ft-stm-container {
+        padding-left: 10vw;
+        @include flexWrap($justify:left); 
+            flex-direction: column;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-stm-wrapper {
+            .ft-stm-inner {
+                @include flexWrap ($justify:left, $gap:2.2vw);
+                >li {
+                    >a {
+                        display: block;
+                        padding-bottom: 8px;
+                        color: $mLetter;
+                        font-size: 24px;
+                        font-weight: 700;
+                    }
+                    .ft-stm {
+                        >li {
+                            >a {
+                                color: $mLetter;
+                                font-size: 18px;
+                                font-weight: 100;
+                                line-height: 1.8;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ft-cts-container {
+        margin-left: 5vw;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-cts {
+            color: $mLetter;
+            font-size: 18px;
+            dt {
+                font-weight: 700;
+                padding-bottom: 10px;
+            }
+            dd {
+                font-weight: 100;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .ft-fu-container {
+        @include flexWrap($justify:left); 
+        flex-direction: column;
+        >h2 {
+            padding-bottom: 24px;
+            color: $mLetter;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .ft-fu-wrapper {
+            @include flexWrap($justify:left, $gap:20px);
+            a {
+                display: block;
+                width: 40px;
+                height: 40px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .ft-fu-blog {
+                width: 45px;
+                height: 40px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .ft-policy-container {
+        padding-left: 10vw;
+        color: $mLetter;
+        line-height: 2;
+        .pwc-policy {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .pwc-rights {
+            font-size: 16px;
+            font-weight: 100;
+        }
+    }
+}

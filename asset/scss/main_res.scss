@@ -1,0 +1,1068 @@
+//메인컬러
+$mColor: #1b3472;
+//메인글자컬러
+$mLetter: #fff;
+//서브글자컬러
+$sLetter: #222;
+//해상도 설정
+$sub1500: 1500px;
+$tab1280: 1280px;
+$mo768: 768px;
+$moOnly480: 480px;
+
+//메인컬러
+$mColor: #1b3472;
+//메인글자컬러
+$mLetter: #fff;
+//서브글자컬러
+$sLetter: #222;
+
+//제목
+@mixin title($글자색:$메인컬러,$정렬:center,$두께:null){
+    color:$글자색;
+    text-align: $정렬;
+    font-weight: $두께;
+}
+
+//flex
+@mixin flexWrap($justify: space-between, $gap:null, $align:null){
+    display: flex;
+    justify-content: $justify;
+    gap: $gap;
+    align-items: $align;
+}
+
+//반응형
+@mixin respond($screen){
+    @media screen and (max-width:$screen) {
+        @content;
+    }
+}
+
+//마스크
+@mixin blmsk($blmsk:rgba(0, 0, 0, 0.5)) {
+    width: 100%;
+    height: 100%;
+    background-color: $blmsk;
+}
+
+//공용
+body {
+    position: relative;
+}
+
+// 1. 가독성 및 디자인을 위한 특수한 경우 (1500px ~)
+@include respond($sub1500) {
+    #pwc-main {
+        #main-banner {
+            .mb-container {
+                .mb-wrapper {
+                    .mb02 {
+                        position: relative;
+                        width: calc(100% / 3);
+                        height: 100%;
+                        .textbox {
+                            position: absolute;
+                            left: 53%;
+                            width: 650px;
+                            transform: translateX(-50%);
+                            h3 {
+                                width: 100%;
+                                padding-bottom: 20px;
+                                color: $mLetter;
+                                font-size: 40px;
+                                font-weight: 700;
+                                line-height: 1.4;
+                                letter-spacing: 0.5px;
+                                word-break: keep-all;
+                            }
+                            p {
+                                width: 100%;
+                                color: $mLetter;
+                                font-size: 20px;
+                                font-weight: 100;
+                                line-height: 1.8;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-business {
+            position: relative;
+            width: 100%;
+            height: 1080px;
+            .busi-container {
+                .busi-wrapper {
+                    @include flexWrap ($justify:center, $gap:1vw);
+                    .busi-menu-wrap {
+                        .busi-menu {
+                            li {
+                                a {
+                                    &::before {
+                                        left: -15px;
+                                    }
+                                    &.active {
+                                        &::before {
+                                            left: -18px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .busi-contents-wrap {
+                        @include flexWrap($gap: 1vw);
+                    }
+                }
+            }
+        }
+
+    }
+    #pwc-ft {
+        grid-template-columns: 3fr 1fr 1fr;
+        grid-template-rows: 2.5fr 1fr;
+        position: relative;
+        width: 100%;
+        height: 500px;
+        padding-top: 50px;
+        background-color: $mColor;
+        .ft-stm-container {
+            padding-left: 5vw;
+            @include flexWrap($justify:left); 
+                flex-direction: column;
+            >h2 {
+                padding-bottom: 24px;
+                color: $mLetter;
+                font-size: 32px;
+                font-weight: 700;
+            }
+            .ft-stm-wrapper {
+                .ft-stm-inner {
+                    @include flexWrap ($justify:left, $gap:1.5vw);
+                    >li {
+                        >a {
+                            display: block;
+                            padding-bottom: 8px;
+                            color: $mLetter;
+                            font-size: 24px;
+                            font-weight: 700;
+                        }
+                        .ft-stm {
+                            >li {
+                                >a {
+                                    color: $mLetter;
+                                    font-size: 18px;
+                                    font-weight: 100;
+                                    line-height: 1.8;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ft-cts-container {
+            margin-left: 2.5vw;
+            >h2 {
+                padding-bottom: 24px;
+                color: $mLetter;
+                font-size: 32px;
+                font-weight: 700;
+            }
+            .ft-cts {
+                color: $mLetter;
+                font-size: 18px;
+                dt {
+                    font-weight: 700;
+                    padding-bottom: 10px;
+                }
+                dd {
+                    font-weight: 100;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        .ft-fu-container {
+            @include flexWrap($justify:left); 
+            flex-direction: column;
+            margin-left: 2.5vw;
+            >h2 {
+                padding-bottom: 24px;
+                color: $mLetter;
+                font-size: 32px;
+                font-weight: 700;
+            }
+            .ft-fu-wrapper {
+                @include flexWrap($justify:left, $gap:20px);
+                a {
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .ft-fu-blog {
+                    width: 45px;
+                    height: 40px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .ft-policy-container {
+            padding-left: 5vw;
+            color: $mLetter;
+            line-height: 2;
+            .pwc-policy {
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .pwc-rights {
+                font-size: 16px;
+                font-weight: 100;
+            }
+        }
+    }
+}
+
+// 2. 태블릿 (~1280px)
+@include respond($tab1280) {
+    #pwc-hd {
+        .hd-container {
+            .hd-wrapper {
+                @include flexWrap();
+                .hd-logo{
+                    margin: 16px 0px 16px 20px;
+                }
+                nav{
+                    .gnb-container {
+                        .gnb-wrapper {
+                            width: 100%;
+                            #gnb {
+                                @include flexWrap($justify:center);
+                                .gnb-depth1 {
+                                    font-size: 2.4rem;
+                                    >a {
+                                        padding: 0 16px;
+                                        padding-top: 28px;
+                                    }
+                                    .gnb-submenu {
+                                        @include flexWrap($justify:center, $gap: 5vw);
+                                    }
+                                }
+                            }
+                        }
+                   }
+                }
+                .quick-menu {
+                    margin-right: 20px;
+                    .sch-btn {      //나중에 꼭 상호작용 만들어 줄 것
+                        margin-right: 20px;
+                    }
+                    .ham {
+                        width: 28px;
+                        height: 28px; 
+                        background-image: url("../img/header/bars-solid.svg");
+                        background-position: center center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                    .sitemap-wrapper {
+                        display: none;      //사이트맵 가리기용
+                        .modal {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100vh;
+                            background-color: rgba(0, 0, 0, 0.9);
+                        }
+                        .sitemap {
+                            @include flexWrap($gap:2vw);
+                            .stm-depth1 {
+                                width: 22vw;
+                                font-size: 24px;
+                                .stm-submenu {
+                                    .stm-depth2 {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .close-btn {
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #pwc-main {
+        width: 100%;
+        #pwc-business {
+            height: 900px;
+            padding: 0 30px;
+            .busi-title-wrap {
+                padding-top: 50px;
+                >h2 {
+                    font-size: 32px;
+                }
+                >p {
+                    padding-bottom: 50px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    word-break: keep-all;
+                }
+            }
+            .busi-container {
+                .busi-wrapper {
+                    @include flexWrap ($justify:center, $gap: 80px);
+                    flex-direction: column;
+                    .busi-menu-wrap {
+                        width: inherit;
+                        padding-top: 0px;
+                        .busi-menu {
+                            @include flexWrap($justify:center, $gap: 8vw);
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            padding-right: 1vw;
+                            li {
+                                text-align: center;
+                                a {
+                                    font-size: 18px;
+                                    line-height: 22px;
+                                    &::before {
+                                        // display: none;
+                                        left: -10px;
+                                        width: 4px;
+                                        height: 4px;
+                                        top: 40%;
+                                    }
+                                    &.active {
+                                        &::before {
+                                            left: -16px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .busi-contents-wrap {
+                        @include flexWrap($gap: 4vh);
+                        flex-direction: column;
+                        .busi-contents-left {
+                            padding-top: 60px;
+                            margin-top: 0;
+                            .busi-title {
+                                >h3 {
+                                    margin-bottom: 10px;
+                                    font-size: 28px;
+                                }
+                                >p {
+                                    margin-bottom: 10px;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    line-height: 1.8;
+                                    word-break: keep-all;
+                                }
+                                >button {
+                                    width: 90px;
+                                    height: 40px;
+                                    color: $mLetter;
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    background-color: $mColor;
+                                    border-radius: 6px;
+                                    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+                                }
+                            }
+                        }
+                        .busi-contents-right {
+                            ul {
+                                >li {
+                                    width: 22vw;
+                                    height: 22vw;
+                                    >a {
+                                        display: block;
+                                        width: 100%;
+                                        height: 100%;
+                                        dl {
+                                            padding: 15px;
+                                            dt {
+                                                width: 100%;
+                                                font-size: 20px;
+                                                font-weight: 700;
+                                                text-align: center;
+                                            }
+                                            dd {
+                                                display: none;
+                                                margin-top: 25%;
+                                                margin-bottom: 20px;
+                                                font-size: 14px;
+                                                font-weight: 100;
+                                                transform: translateY(5%);
+                                            }
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    @include flexWrap ($gap: 5px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-protfolio {
+            .pf-container {
+                .pf-wrapper {
+                    left: 8vw;
+                    .pf-tab-inner {
+                        .pf-tab {
+                            >a {
+                                width: 100%;
+                                height: 100%;
+                                padding: 374px 0 10px 10px;
+                                font-size: 16px;
+                                line-height: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-pm {
+            .pm-container {
+                .pm-wrapper {
+                    .pm-inner {
+                        position: absolute;
+                        left: 160px;
+                        top: 140px;
+                    }
+                }
+            }
+        }
+    }
+    #pwc-ft {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        grid-template-rows: 3.5fr 1fr;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 30px;
+        background-color: $mColor;
+        .ft-stm-container {
+            padding-left: 2vw;
+            @include flexWrap($justify:left); 
+                flex-direction: column;
+            >h2 {
+                padding-bottom: 20px;
+                color: $mLetter;
+                font-size: 28px;
+                font-weight: 700;
+            }
+            .ft-stm-wrapper {
+                .ft-stm-inner {
+                    @include flexWrap ($justify:space-between, $gap:1vw);
+                    >li {
+                        >a {
+                            display: block;
+                            padding-bottom: 8px;
+                            color: $mLetter;
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+                        .ft-stm {
+                            >li {
+                                >a {
+                                    color: $mLetter;
+                                    font-size: 16px;
+                                    font-weight: 100;
+                                    line-height: 1.6;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ft-cts-container {
+            margin-left: 4vw;
+            >h2 {
+                padding-bottom: 24px;
+                color: $mLetter;
+                font-size: 28px;
+                font-weight: 700;
+            }
+            .ft-cts {
+                color: $mLetter;
+                font-size: 16px;
+                dt {
+                    font-weight: 700;
+                    padding-bottom: 10px;
+                }
+                dd {
+                    font-weight: 100;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        .ft-fu-container {
+            @include flexWrap($justify:left); 
+            flex-direction: column;
+            padding-right: 2vw;
+            >h2 {
+                padding-bottom: 24px;
+                color: $mLetter;
+                font-size: 28px;
+                font-weight: 700;
+            }
+            .ft-fu-wrapper {
+                @include flexWrap($justify:left, $gap:20px);
+                a {
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .ft-fu-blog {
+                    width: 45px;
+                    height: 40px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .ft-policy-container {
+            grid-column: 1 / 4;
+            padding-left: 2vw;
+            padding-top: 10px;
+            color: $mLetter;
+            line-height: 1.6;
+            word-break: keep-all;
+            .pwc-policy {
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .pwc-rights {
+                font-size: 14px;
+                font-weight: 100;
+            }
+        }
+    }
+}
+// 3. 모바일 ( ~768px)
+@include respond($mo768) {
+    // 1. 헤더
+    #pwc-hd {
+        display: none;
+    }
+    #pwc-m-hd {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 80px;
+        background-color: $mColor;
+        z-index: 999;
+        .m-hd-container {
+            position: relative;
+            .m-hd-wrapper {
+                @include flexWrap();
+                flex-wrap: wrap;
+                .m-hd-logo{
+                    width: 48px;
+                    height: 48px;
+                    margin: 16px 56px 16px 30px;
+                    background-image: url("../img/header/logo/pwc_logo_main.png");
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    z-index: 9999;
+                    >a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                nav{
+                    order:3;
+                    position: absolute;
+                    left: -70vw;
+                    padding-top: 80px;
+                    background-color: $mColor;
+                    transition: left, 200ms;
+                    z-index: 1;
+                    .m-gnb-container {
+                        width: 70vw;
+                        height: 100vh;
+                        .m-gnb-wrapper {
+                            width: 100%;
+                            #m-gnb {
+                                @include flexWrap($justify:center);
+                                flex-direction: column;
+                                .m-gnb-depth1 {
+                                    position: relative;
+                                    font-size: 2.4rem;
+                                    border-top: 1px solid rgba(255, 255, 255, 0.2); 
+                                    >a {
+                                        display: block;
+                                        width: 100%;
+                                        padding: 20px 40px;
+                                        color: $mLetter;
+                                    }
+                                    .m-gnb-submenu {
+                                        display: none;
+                                        position: static;
+                                        background-color: #fff;
+                                        .m-gnb-depth2 {
+                                            font-size: 1.8rem;
+                                            font-weight: 400;
+                                            >a {
+                                                display: block;
+                                                padding: 20px 0px 20px 50px;
+                                                line-height: 20px;
+                                                color: $mColor;
+                                                transition: padding 300ms;
+                                                &.active {
+                                                    padding-left: 70px;
+                                                }
+                                            }
+                                        }
+                                        &.active {
+                                            display: block;
+                                            height: 100%;
+                                        }
+                                    }
+                                    &:last-child {
+                                        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.active {
+                        left: 0;
+                    }
+                }
+                .m-quick-menu {
+                    @include flexWrap();
+                    margin-right: 30px;
+                    margin-top: 26px;
+                    .m-sch-btn {      //나중에 꼭 상호작용 만들어 줄 것
+                        width: 28px;
+                        height: 28px;
+                        margin-right: 24px;
+                        background-image: url("../img/header/magnifying-glass-solid.svg");
+                        background-position: center center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                    .m-ham {
+                        width: 28px;
+                        height: 28px; 
+                        background-image: url("../img/header/bars-solid.svg");
+                        background-position: center center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                }
+                .m-modal {
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    .m-close-btn {
+                        position: absolute;
+                        width: 28px;
+                        height: 28px;
+                        right: 0;
+                        top: 0;
+                        margin-right: 30px;
+                        margin-top: 26px;
+                        >a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    //2. 메인
+ #pwc-main {
+        #main-banner {
+            height: 600px;
+            .mb-container {
+                .mb-wrapper {
+                    .mb01 {
+                        .imgbox {
+                            background-size: cover;
+                            background-position: 55% center;
+                        }
+                        .textbox {
+                            position: absolute;
+                            left: 48%;
+                            top: 40%;
+                            transform: translateX(-50%);
+                            h3 {
+                                font-size: 32px;
+                                font-weight: 100;
+                                word-break: keep-all;
+                            }
+                            p {
+                                display: none;
+                            }
+                        }
+                    }
+                    .mb02 {
+                        .imgbox {
+                            background-size: cover;
+                            background-position: center 60%;
+                            background-repeat: no-repeat;
+                        }
+                        .textbox {
+                            position: absolute;
+                            left: 52%;
+                            top: 35%;
+                            width: 240px;
+                            transform: translateX(-50%);
+                            h3 {
+                                font-size: 32px;
+                                font-weight: 100;
+                                word-break: keep-all;
+                            }
+                            p {
+                                display: none;
+                            }
+                        }
+                    }
+                    .mb03 {
+                        .imgbox {
+                            background-size: cover;
+                            background-position: 55% center;
+                        }
+                        .textbox {
+                            position: absolute;
+                            left: 52%;
+                            top: 35%;
+                            width: 240px;
+                            transform: translateX(-50%);
+                            h3 {
+                                font-size: 32px;
+                                font-weight: 100;
+                                word-break: keep-all;
+                            }
+                            p {
+                                display: none;
+                            }
+                        }}
+                }
+                .mb-pagination-wrap {
+                    .swiper-pagination-bullet {
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+        #pwc-business {
+            display: block;
+            height: auto;
+            padding: 0 20px;
+            .busi-title-wrap {
+                padding-top: 30px;
+                >h2 {
+                    padding-bottom: 20px;
+                    font-size: 32px;
+                }
+                >p {
+                    padding-bottom: 20px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    word-break: keep-all;
+                }
+            }
+            .busi-container {
+                .busi-wrapper {
+                    @include flexWrap ($justify:center, $gap:20px);
+                    flex-direction: column;
+                    margin-top: 0;
+                    padding-bottom: 60px;
+                    .busi-menu-wrap {
+                        .busi-menu {
+                            @include flexWrap($justify:center, $gap:0);
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            li {
+                                padding: 10px 20px;
+                                a {
+                                    font-size: 18px;
+                                    &::before {
+                                        // display: none;
+                                        left: -10px;
+                                        width: 4px;
+                                        height: 4px;
+                                        top: 40%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .busi-contents-wrap {
+                        @include flexWrap($gap: 20px);
+                        flex-direction: column;
+                        max-width: 90%;
+                        min-width: 90%;
+                        margin: 0 auto;
+                        .busi-contents-left {
+                            padding-top: 10px;
+                            .busi-title {
+                                >h3 {
+                                    margin-bottom: 10px;
+                                    font-size: 28px;
+                                }
+                                >p {
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    line-height: 1.8;
+                                    word-break: keep-all;
+                                }
+                                >button {
+                                    width: 90px;
+                                    height: 40px;
+                                    color: $mLetter;
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    background-color: $mColor;
+                                    border-radius: 6px;
+                                    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+                                }
+                            }
+                        }
+                        .busi-contents-right {
+                            ul {
+                                display: none;
+                                width: 100%;
+                                >li {
+                                    position: relative;
+                                    width: 100%;
+                                    padding-top: 100%;
+                                    background-size: cover;
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                    &.busi-contents-consulting01 {
+                                        background-image: url("../img/main/page02/consulting/consult_img01.jpg");
+                                    }
+                                    &.busi-contents-consulting02 {
+                                        background-image: url("../img/main/page02/consulting/consult_img02.jpg");
+                                    }
+                                    &.busi-contents-consulting03 {
+                                        background-image: url("../img/main/page02/consulting/consult_img03.jpg");
+                                    }
+                                    &.busi-contents-consulting04 {
+                                        background-image: url("../img/main/page02/consulting/consult_img04.jpg");
+                                    }
+                                    >a {
+                                        display: block;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                        width: 100%;
+                                        dl {
+                                            width: 100%;
+                                            padding: 0;
+                                            padding-top: 100%;
+                                            dt {
+                                                font-size: 18px;
+                                                font-weight: 700;
+                                                text-align: center;
+                                                &.active {
+                                                    top: 50%;
+                                                    padding-bottom: 0;
+                                                    }
+                                            }
+                                            dd {
+                                                display: none;
+                                                padding: auto 10px;
+                                                margin: 0 auto;
+                                                line-height: 2.2rem;
+                                                font-size: 14px;
+                                                font-weight: 100;
+                                                transform: translateY(-100%);
+                                                word-break: keep-all;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    display: grid;
+                                    grid-template-rows: repeat(2, 1fr);
+                                    grid-template-columns: repeat(2, 1fr);
+                                    row-gap: 5px;
+                                    column-gap: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-protfolio {
+            @include flexWrap();
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            .pf-title-wrap {
+                position: static;
+                padding: 8vh 20px;
+                text-align: center;
+                h2 {
+                    padding-bottom: 2vh;
+                    font-size: 32px;
+                    font-weight: 700;
+                }
+                p {
+                    border-top: none;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    word-break: keep-all;
+                }
+            }
+            .pf-container {
+                .pf-wrapper {
+                    position: static;
+                    width: 100%;
+                    height: 100%;
+                    transform: translateY(0);
+                    .pf-tab-inner {
+                        position: static;
+                        display: grid;
+                        grid-template-columns: repeat(2, calc((100vw - (100vw - 100%)) / 2));
+                        grid-template-rows: repeat(3, 50vw);        //얘는 왜 계산식을 쓰면 0이 되는 건지..ㅠㅜ 다른거 다 잘 먹는데
+                        column-gap: 0;
+                        row-gap: 0;
+                        .pf-tab {
+                            width: calc(50vw - (50vw - 100%));
+                            height: calc(50vw - (50vw - 100%));
+                            margin: 0;
+                            background-size: cover;
+                            &.pf-tab-consulting {
+                                width: calc(100vw - (100vw - 100%));
+                                grid-column: 1 / 3;
+                            }
+                            &:nth-child(2n) {
+                                margin-top: 0px;
+                            }
+                            >a {
+                                position: relative;
+                                width: 100%;
+                                height: 100%;
+                                padding: 0;
+                                >span {
+                                    position: absolute;
+                                    left: 2vw;
+                                    bottom: 1vh;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-together {
+            height: 400px;
+            background-position: center 80%;
+            .toge-container {
+                .toge-wrapper {
+                    h3 {
+                        display: none;
+                    }
+                    .m-toge-title {
+                        display: block;
+                        padding-top: 50px;
+                        color: $mLetter;
+                        font-size: 28px;
+                        font-weight: 700;
+                        text-align: center;
+                    }
+                    .toge-inner {
+                        @include flexWrap($justify:space-between);
+                        flex-direction: column;
+                        margin-top: 30px;
+                        text-align: center;
+                        p {
+                            padding-top: 20px;
+                            font-size: 14px;
+                            span {
+                                font-size: 32px;
+                                font-weight: 700;
+                                line-height: 1.4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #pwc-pm {
+            height: 500px;
+            .pm-container {
+                .pm-wrapper {
+                    .pm-inner {
+                        position: absolute;
+                        left: 30px;
+                        top: 100px;
+                        padding: 0 20px;
+                        h3 {
+                            margin-bottom: 10px;
+                            font-size: 32px;
+                            line-height: 4rem;
+                            word-break: keep-all;
+                        }
+                        .btn-more {
+                            width: 90px;
+                            height: 40px;
+                            border-radius: 6px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //3. 푸터
+    #pwc-ft {
+        height: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 0.25fr;
+        padding: 20px 20px;
+        .ft-stm-container {
+            display: none;
+        }
+        .ft-policy-container {
+            grid-column: 1 / 3;
+            padding-left: 0;
+            padding-top: 10px;
+            word-break: keep-all;
+        }
+    }
+}

@@ -1,0 +1,208 @@
+@charset 'UTF-8';
+/* 서브 헤더 공통 */
+#paris-sub-hd {
+    position: relative;
+}
+.sub-hd-bg { /*서브 비주얼 이미지*/
+    height: 180px;
+    background-image: url('../img/sub_page/sub_hd/sub_hd_pf_bg01.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sub-hd-container {
+    height: 280px;
+}
+.sub-hd-wrap {
+    padding-bottom: 60px;
+    vertical-align: middle;
+    text-align: center;
+}
+.sub-hd-wrap h2 {
+    margin-bottom: 0.5em;
+    font-size: 2.4em;
+}
+.bread-menu {}
+.bread-menu li {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.7em;
+}
+.bread-menu li:after { /*동그라미*/
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    margin-top: -2px;
+    border-radius: 50%;
+    background-color: #999;
+    content: '';
+}
+.bread-menu .last:after {
+    display: none;
+}
+.bread-menu li a {
+    color: #999;
+}
+.bread-menu li a:hover {
+    text-decoration: underline;
+}
+.bread-menu strong {
+    color: #000;
+    font-weight: 400;
+}
+
+.lnb-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 48px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 3px rgba(0,0,0,0.15);
+    z-index: 98;
+}
+.lnb-container.fixed {
+    position: fixed;
+    bottom: inherit;
+}
+.lnb-wrap {}
+#paris-lnb {}
+#paris-lnb li {}
+#paris-lnb .active {}
+#paris-lnb li a {
+    display: block;
+    background-color: #fff;
+}
+#paris-lnb .active a {
+    position: relative;
+    background-color: #DBE1ED;
+    color: #023586;
+}
+#paris-lnb .active a:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #023586;
+    content: '';
+}
+
+/* 서브 메인 공통 */
+#paris-main {
+    position: relative;
+    padding: 80px 2%;
+}
+main img {
+    width: 100%;
+}
+.title-img {}
+main h1 {
+    margin-bottom: 60px;
+    font-size: 2.5em;
+    text-align: center;
+}
+main section h2, main section h3, main section h4 {
+    font-family: 'Roboto', 'Noto Sans KR', 'Malgun Gothic', 'Dotum', sans-serif;
+    text-align: center;
+}
+main section h2 {
+    font-size: 2em;
+}
+main section h3 {
+    font-size: 1.5em;
+}
+main section h4 {
+    font-size: 1.2em;
+}
+
+.txt-img-wrap {
+    position: relative;
+}
+.txt {
+    margin-bottom: 60px;
+    word-break: keep-all;
+    /* 
+    1. normal(default) : 영어는 단어구분, 한글은 문자마다 구분
+    2. keep-all(★★★) : 한글도 영어처럼 단어로 구분
+    3. break-all : 영어도 한글처럼 문자로 구분
+     */
+}
+
+.txt h3 {
+    margin-bottom: 1em;
+}
+.comment {
+    display: block;
+    margin-top: 1em;
+    font-size: 0.85em;
+    color: #999;
+}
+
+/* 1. 모바일까지 */
+@media screen and (max-width: 767px) {}
+
+/* 2. 태블릿부터 */
+@media screen and (min-width: 768px) {
+    .lnb-container {
+        font-size: 1.2em;
+        letter-spacing: 0;
+    }
+}
+
+/* 3. 태블릿만 */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    #paris-main article {
+        width: 650px;
+        margin: auto;
+    }
+}
+
+/* 4. PC부터 */
+@media screen and (min-width: 1280px) {
+    sub-hd-bg {
+        height: 300px;
+    }
+    .sub-hd-container {
+        height: 360px;
+    }
+    .lnb-container {
+        font-size: 1.3em;
+        line-height: 60px;
+    }
+    #paris-main {
+        padding: 150px 0;
+    }
+    main h1 {
+        margin-bottom: 100px;
+    }
+    .txt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        padding: 0 8%;
+        margin-bottom: 0;
+    }
+    .txt .table {
+        height: 100%;
+    }
+    .img {
+        padding-left: 50%;
+    }
+    .even .txt {
+        left: inherit;
+        right: 0;
+    }
+    .even .img {
+        padding-left: 0;
+        padding-right: 50%;
+    }
+}
